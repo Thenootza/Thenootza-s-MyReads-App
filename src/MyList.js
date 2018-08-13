@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
-class MyBooks extends Component {
+class MyList extends Component {
   render() {
     return {
-      
+
     }
   }
 }
 
-export default MyBooks
+export default MyList

@@ -4,6 +4,7 @@ import './App.css'
 import { Route } from 'react-router-dom'
 import SearchPage from './SearchPage'
 import MyBooks from './MyBooks'
+import MyList from './MyList'
 
 
 class BooksApp extends React.Component {
