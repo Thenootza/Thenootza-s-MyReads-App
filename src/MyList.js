@@ -7,7 +7,7 @@ class MyList extends Component {
                 <div className="book">
                     <div className="book-top">
                         <div className="book-cover">
-
+                          <img src={books.imageLinks ? books.imageLinks.thumbnail : "No image found"} alt={`book cover of ${books.title}`}/>
                         </div>
                         <div className="book-shelf-changer">
                             <select value={books.shelf ? books.shelf : "none"}>

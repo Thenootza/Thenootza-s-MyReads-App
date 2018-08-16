@@ -16,17 +16,29 @@ class BooksApp extends React.Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
      books: [],
+   };
 
      componentDidMount (){
-       BooksAPI.getAll().then((books)=> this.setState({ books }))
-     }
-  }
+       BooksAPI.getAll().then((books)=> {
+       this.setState({ books })
+     })
+   };
+
+     shelfChanger=(book, shelf)=>{
+       BooksAPI.update(book, shelf)
+      .then(() => {
+        book.shelf = shelf;
+        this.setState(state => ({
+          books: state.books.filter(item => item.id !== book.id).concat([book])
+        }))
+      })
+    };
 
   render() {
     return (
-      <div className="app">
+      <div>
         <Route exact path="/" render={() =>
-          <MyBooks> {this.state.books} </MyBooks>}
+          <MyBooks books={this.state.books}  />}
           />
 
         <Route exact path="/SearchPage" render={() =>
@@ -34,7 +46,7 @@ class BooksApp extends React.Component {
           />
 
           <Route exact path="/MyList" render={() =>
-          <MyList></MyList>}
+          <MyList> </MyList>}
           />
       </div>
     )
