@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom'
 import SearchPage from './SearchPage'
 import MyBooks from './MyBooks'
 import MyList from './MyList'
+import { Link } from 'react-router-dom'
 
 
 class BooksApp extends React.Component {
@@ -35,12 +36,14 @@ class BooksApp extends React.Component {
           <MyBooks books={this.state.books} shelfChanger={this.shelfChanger} />}
           />
 
-        <Route exact path="/SearchPage" render={() =>
-          <SearchPage> </SearchPage>}
-          />
-
-          <Route exact path="/MyList" render={() =>
-          <MyList> </MyList>}
+          <Route
+            path="/SearchPage"
+            render={() => (
+              <SearchPage
+                books={this.state.books}
+                changeShelf={this.shelfChanger}
+              />
+            )}
           />
       </div>
     )
