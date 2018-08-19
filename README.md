@@ -3,7 +3,7 @@
 This is a book track application. There are 3 shelfs (Currently Reading, Want to Read and Read), the user can move the books from one shelf to another by using the green ring on the lower-right corner of the book cover. Also the user can search from books that are fetched from the API and can add them to the shelfs on the main page.
 
 ## Environment Setup
-1. Download or clone this repository (Use '$ git clone https://github.com/Thenootza/Thenootzas_MyReads.git' command on the git bash window opened from the folder you want to clone the repository to).
+1. Download or clone this repository (Use '$ git clone https://github.com/Thenootza/Thenootza-s-MyReads-App.git' command on the git bash window opened from the folder you want to clone the repository to).
 2. If you download the repository: unzip the folder.
 3. Open Command Prompt on your desktop (for Windows 10: on your lower-left corner of your desktop, on the search bar, type 'cmd' and hit 'return').
 4. Use 'cd' to enter into the cloned or downloaded repository ('cd "folder_name"').
