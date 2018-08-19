@@ -11,7 +11,7 @@ class MyList extends Component {
                         </div>
                         <div className="book-shelf-changer">
                             <select value={books.shelf ? books.shelf : "none"} onChange={(event) => shelfChanger(books, event.target.value)}>
-                                <option>Move to...</option>
+                                <option value="move">Move to...</option>
                                 <option value="currentlyReading">Currently Reading</option>
                                 <option value="wantToRead">Want to Read</option>
                                 <option value="read">Read</option>

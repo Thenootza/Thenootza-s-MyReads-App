@@ -1,22 +1,36 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import MyList from './MyList'
+import * as BooksAPI from './BooksAPI'
+import MyBooks from './MyBooks'
 
 class SearchPage extends Component {
   state = {
-    query: ''
+    query: '',
+    booksFound: []
   }
 
   updateQuery = (query) => {
-    this.setState({ query: query.trim() })
-  }
-
-  clearQuery = () => {
-    this.setState({ query: '' })
+    this.setState({ query })
+    let booksFound = []
+    if (query) {
+      BooksAPI.search(query).then((result) => {
+        if (result.length) {
+          booksFound = result.map((book) => {
+            let index = this.props.books.findIndex(b => b.id === book.id)
+            if (index >= 0) {return this.props.books[index]}
+              else { return book }
+          })
+        }
+        this.setState({ booksFound })
+      })}
+        else { this.setState({ booksFound })
+        }
   }
 
   render(){
-    const { books } = this.props
-    const { query } = this.state
+    const { books, shelfChanger } = this.props
+    const { query, booksFound } = this.state
 
     return (
       <div className='search-books'>
@@ -25,9 +39,16 @@ class SearchPage extends Component {
             className='search-books-input-wrapper'
             type='text'
             placeholder='Search books'
-            value={query}
+            value = {this.state.query || ""}
             onChange={(event) => this.updateQuery(event.target.value)}
           />
+          <div className="search-books-results">
+              <ol className="books-grid">
+                  {this.state.booksFound.map(book => (
+                      <MyList key = {book.id} books={book} shelfChanger={shelfChanger}/>
+                  ))}
+              </ol>
+          </div>
           <Link
             to='/'
             className='close-search'
