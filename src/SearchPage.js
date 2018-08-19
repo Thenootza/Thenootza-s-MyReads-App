@@ -51,7 +51,7 @@ class SearchPage extends Component {
             to='/'
             className='close-search'
           >Close</Link>
-          
+
         </div>
       </div>
     )
