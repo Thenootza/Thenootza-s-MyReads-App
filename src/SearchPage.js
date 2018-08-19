@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import MyList from './MyList'
 import * as BooksAPI from './BooksAPI'
-import MyBooks from './MyBooks'
 
 class SearchPage extends Component {
   state = {
@@ -29,8 +28,7 @@ class SearchPage extends Component {
   }
 
   render(){
-    const { books, shelfChanger } = this.props
-    const { query, booksFound } = this.state
+    const { shelfChanger } = this.props
 
     return (
       <div className='search-books'>

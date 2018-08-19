@@ -4,9 +4,6 @@ import './App.css'
 import { Route } from 'react-router-dom'
 import SearchPage from './SearchPage'
 import MyBooks from './MyBooks'
-import MyList from './MyList'
-import { Link } from 'react-router-dom'
-
 
 class BooksApp extends React.Component {
   state = {
@@ -41,7 +38,8 @@ class BooksApp extends React.Component {
             render={() => (
               <SearchPage
                 books={this.state.books}
-                changeShelf={this.shelfChanger}
+                shelfChanger={this.shelfChanger}
+
               />)
             }
           />

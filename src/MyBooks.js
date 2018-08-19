@@ -12,7 +12,7 @@ class MyBooks extends Component {
           <div className="list-books-title">
               <h1>MyReads</h1>
           </div>
-
+          <div className="bookshelf">
           <div className="list-books-content">
             <div className="bookshelf-books">
               <div className="books-grid">
@@ -21,8 +21,8 @@ class MyBooks extends Component {
 
                 )}
               </div>
-              <div className="bookshelf">
                 <h2 className="bookshelf-title">Currently Reading</h2>
+
                   <div className="bookshelf-books">
                     {books.filter((books) => books.shelf === "wantToRead").map((books) =>
                       <MyList  key={books.id} books={books} shelfChanger={shelfChanger}/>
@@ -30,6 +30,7 @@ class MyBooks extends Component {
                     )}
                   </div>
                   <h2 className="bookshelf-title">Want To Read</h2>
+
                   <div className="bookshelf-books">
                     {books.filter((books) => books.shelf === "read").map((books) =>
                       <MyList  key={books.id} books={books} shelfChanger={shelfChanger}/>
@@ -40,7 +41,7 @@ class MyBooks extends Component {
                 </div>
               </div>
               <div className='open-search'>
-                <Link to='/SearchPage' onClick={() => this.setState({ showSearchPage: true })}>Add</Link>
+                <Link to='/SearchPage'>Add</Link>
               </div>
             </div>
           </div>

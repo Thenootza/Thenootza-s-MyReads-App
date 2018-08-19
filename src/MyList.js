@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class MyList extends Component {
   render() {
-    const {books, shelfChanger}=this.props;
+    const {books, shelfChanger}=this.props
     return (
                 <div className="book">
                     <div className="book-top">
@@ -10,8 +10,8 @@ class MyList extends Component {
                           <img src={books.imageLinks ? books.imageLinks.thumbnail : "No image found"} alt={`book cover of ${books.title}`}/>
                         </div>
                         <div className="book-shelf-changer">
-                            <select value={books.shelf ? books.shelf : "none"} onChange={(event) => shelfChanger(books, event.target.value)}>
-                                <option value="move">Move to...</option>
+                            <select value={books.shelf ? books.shelf : "none"} aria-label="Choose books category" onChange={(event) => shelfChanger(books, event.target.value)}>
+                                <option value="move" disabled>Move to...</option>
                                 <option value="currentlyReading">Currently Reading</option>
                                 <option value="wantToRead">Want to Read</option>
                                 <option value="read">Read</option>
