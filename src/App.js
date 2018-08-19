@@ -10,21 +10,20 @@ class BooksApp extends React.Component {
      books: [],
    };
 
-     componentDidMount (){
-       BooksAPI.getAll().then((books)=> {
-       this.setState({ books })
-     })
-   };
+  componentDidMount (){
+    BooksAPI.getAll().then((books)=> {
+      this.setState({ books })
+    })
+  };
 
-     shelfChanger=(book, shelf)=>{
-       BooksAPI.update(book, shelf)
-      .then(() => {
-        book.shelf = shelf;
-        this.setState(state => ({
-          books: state.books.filter(item => item.id !== book.id).concat([book])
-        }))
-      })
-    };
+  shelfChanger=(book, shelf)=>{
+    BooksAPI.update(book, shelf).then(() => {
+      book.shelf = shelf;
+      this.setState(state => ({
+        books: state.books.filter(item => item.id !== book.id).concat([book])
+      }))
+    })
+  };
 
   render() {
     return (
@@ -33,16 +32,15 @@ class BooksApp extends React.Component {
           <MyBooks books={this.state.books} shelfChanger={this.shelfChanger} />}
           />
 
-          <Route
-            path="/SearchPage"
-            render={() => (
-              <SearchPage
-                books={this.state.books}
-                shelfChanger={this.shelfChanger}
-
-              />)
-            }
-          />
+        <Route
+          path="/SearchPage"
+          render={() => (
+            <SearchPage
+              books={this.state.books}
+              shelfChanger={this.shelfChanger}
+            />
+          )}
+        />
       </div>
     )
   }

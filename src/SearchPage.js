@@ -17,14 +17,12 @@ class SearchPage extends Component {
         if (result.length) {
           booksFound = result.map((book) => {
             let index = this.props.books.findIndex(b => b.id === book.id)
-            if (index >= 0) {return this.props.books[index]}
-              else { return book }
+            if (index >= 0) {return this.props.books[index]
+            } else { return book }
           })
         }
         this.setState({ booksFound })
-      })}
-        else { this.setState({ booksFound })
-        }
+      })} else { this.setState({ booksFound })}
   }
 
   render(){
@@ -40,17 +38,20 @@ class SearchPage extends Component {
             value = {this.state.query || ""}
             onChange={(event) => this.updateQuery(event.target.value)}
           />
+
           <div className="search-books-results">
-              <ol className="books-grid">
-                  {this.state.booksFound.map(book => (
-                      <MyList key = {book.id} books={book} shelfChanger={shelfChanger}/>
-                  ))}
-              </ol>
+            <ol className="books-grid">
+              {this.state.booksFound.map(book => (
+                <MyList key = {book.id} books={book} shelfChanger={shelfChanger}/>
+              ))}
+            </ol>
           </div>
+
           <Link
             to='/'
             className='close-search'
           >Close</Link>
+          
         </div>
       </div>
     )
